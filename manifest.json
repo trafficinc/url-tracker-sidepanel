@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "URL Tracker Side Panel",
+  "version": "1.0.0",
+  "description": "Track URL changes across tabs for debugging web apps and Chrome extensions.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Open URL Tracker"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

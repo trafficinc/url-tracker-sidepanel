@@ -1,0 +1,99 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>URL Tracker</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>URL Tracker</h1>
+        <p class="subtitle">Track URL changes for tab debugging, web app routing, and extension testing.</p>
+      </div>
+      <div id="statusBadge" class="status off">⬡ Capture OFF</div>
+    </header>
+
+    <section class="controls card">
+      <div class="button-row">
+        <button id="startBtn" class="primary">▶ Start Capture</button>
+        <button id="stopBtn">■ Stop Capture</button>
+        <button id="clearBtn" class="danger">✕ Clear All</button>
+        <button id="exportBtn">↓ Export JSON</button>
+      </div>
+
+      <div class="filters-grid">
+        <label>
+          <span>Search</span>
+          <input id="searchInput" type="text" placeholder="Search URL, title, event type..." />
+        </label>
+
+        <label>
+          <span>Event Type</span>
+          <select id="eventTypeFilter">
+            <option value="">All Events</option>
+            <option value="tabs.onUpdated">tabs.onUpdated</option>
+            <option value="webNavigation.onCommitted">webNavigation.onCommitted</option>
+            <option value="webNavigation.onHistoryStateUpdated">webNavigation.onHistoryStateUpdated</option>
+            <option value="webNavigation.onReferenceFragmentUpdated">webNavigation.onReferenceFragmentUpdated</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Tab ID</span>
+          <input id="tabIdFilter" type="number" min="0" placeholder="Any" />
+        </label>
+      </div>
+
+      <div class="settings-row">
+        <label class="checkbox-row">
+          <input id="activeTabOnly" type="checkbox" />
+          <span>Capture active tab only</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="includeHashChanges" type="checkbox" checked />
+          <span>Include hash changes</span>
+        </label>
+
+        <label style="flex-direction:row; align-items:center; gap:8px;">
+          <span style="white-space:nowrap;">Max events</span>
+          <input id="maxEvents" type="number" min="50" max="10000" step="50" style="width:80px;" />
+        </label>
+      </div>
+    </section>
+
+    <section class="summary card">
+      <div><strong id="eventCount">0</strong>&nbsp;events captured</div>
+      <div><strong id="visibleCount">0</strong>&nbsp;visible</div>
+      <div><strong id="selectedCount">0</strong>&nbsp;selected</div>
+      <div><button id="deleteSelectedBtn" class="danger ghost">✕ Delete Selected</button></div>
+    </section>
+
+    <section class="table-wrap card">
+      <table>
+        <thead>
+          <tr>
+            <th><input id="selectAll" type="checkbox" /></th>
+            <th>Time</th>
+            <th>Tab</th>
+            <th>Event</th>
+            <th>Title</th>
+            <th>Old URL</th>
+            <th>New URL</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="eventsTableBody">
+          <tr>
+            <td colspan="8" class="empty">Awaiting data stream...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
