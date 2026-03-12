@@ -63,7 +63,7 @@ That means:
 
 Install steps:
 
-1. Download the ZIP
+1. Download the ZIP in releases
 2. Extract it
 3. Go to chrome://extensions
 4. Enable Developer Mode
