@@ -10,6 +10,8 @@ It is useful for:
 - debugging normal web application navigation
 - capturing and reviewing visited URLs during a test session
 
+<img src="app-001.png" alt="Alt text" width="600" />
+
 ## Features
 
 - Start Capture / Stop Capture
